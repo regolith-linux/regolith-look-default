@@ -1,0 +1,5 @@
+regolith.look: minimal
+
+#include "/usr/share/regolith-look/minimal/color"
+#include "/usr/share/regolith-look/minimal/typeface"
+#include "/usr/share/regolith-look/minimal/theme"

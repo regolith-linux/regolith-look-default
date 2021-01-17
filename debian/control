@@ -1,0 +1,14 @@
+Source: regolith-look-minimal
+Section: x11
+Priority: optional
+Maintainer: Regolith Linux <regolith.linux@gmail.com>
+Build-Depends: debhelper (>= 10)
+Standards-Version: 4.1.2
+Homepage: https://github.com/regolith-linux/regolith-desktop
+Vcs-Git: https://github.com/regolith-linux/regolith-desktop.git
+
+Package: regolith-look-minimal
+Architecture: any
+Depends: ${misc:Depends}
+Description: Simple Look for Regolith with minimal dependencies
+ A basic Regolith look optimized for minimal dependencies.
