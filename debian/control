@@ -9,6 +9,9 @@ Vcs-Git: https://github.com/regolith-linux/regolith-desktop.git
 
 Package: regolith-look-minimal
 Architecture: any
-Depends: ${misc:Depends}
+Depends: ${misc:Depends},
+  fonts-materialdesignicons-webfont (> 1.6.50),
+  fonts-dejavu-core,
+  ayu-theme
 Description: Simple Look for Regolith with minimal dependencies
  A basic Regolith look optimized for minimal dependencies.
