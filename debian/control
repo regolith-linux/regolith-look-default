@@ -1,4 +1,4 @@
-Source: regolith-look-minimal
+Source: regolith-look-default
 Section: x11
 Priority: optional
 Maintainer: Regolith Linux <regolith.linux@gmail.com>
@@ -7,11 +7,11 @@ Standards-Version: 4.1.2
 Homepage: https://github.com/regolith-linux/regolith-desktop
 Vcs-Git: https://github.com/regolith-linux/regolith-desktop.git
 
-Package: regolith-look-minimal
+Package: regolith-look-default
 Architecture: any
 Depends: ${misc:Depends},
   fonts-materialdesignicons-webfont (> 1.6.50),
   fonts-dejavu-core,
   ayu-theme
-Description: Simple Look for Regolith with minimal dependencies
+Description: Default Look for Regolith with minimal dependencies
  A basic Regolith look optimized for minimal dependencies.
