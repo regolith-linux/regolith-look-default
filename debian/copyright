@@ -1,5 +1,5 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Source: https://github.com/regolith-linux/regolith-look-minimal
+Source: https://github.com/regolith-linux/regolith-look-default
 
 Files: *
 Copyright: 2019 - 2021 Ken Gilmer <kgilmer@gmail.com>
