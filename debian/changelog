@@ -1,4 +1,4 @@
-regolith-look-default (0.3.1-1) focal; urgency=medium
+regolith-look-default (0.3.2-1) focal; urgency=medium
 
   [ Ken Gilmer ]
   * Add virtual package for a look
