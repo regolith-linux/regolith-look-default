@@ -1,4 +1,4 @@
-#define gtk_theme           Ayu-Mirage-Dark
+#define gnome_gtk_theme           Ayu-Mirage-Dark
 #define gnome_icon_theme    Adwaita
 #define rofi_theme          /usr/share/regolith-look/default/rofi.rasi
 #define terminal_scrollbar  never
