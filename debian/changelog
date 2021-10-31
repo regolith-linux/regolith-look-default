@@ -1,10 +1,11 @@
-regolith-look-default (0.3.2-1ubuntu1) UNRELEASED; urgency=medium
+regolith-look-default (0.4.0-1) focal; urgency=medium
 
   [ Ken Gilmer ]
   * build automation
   * Fix gnome theme key
+  * Switch from rofi to ilia
 
- -- Regolith Linux <regolith.linux@gmail.com>  Sun, 05 Sep 2021 16:14:42 -0700
+ -- Regolith Linux <regolith.linux@gmail.com>  Sun, 31 Oct 2021 08:50:14 -0700
 
 regolith-look-default (0.3.2-1) focal; urgency=medium
 
