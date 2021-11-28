@@ -24,6 +24,7 @@ Recommends:
   regolith-i3-gnome,
   regolith-i3-i3xrocks,
   regolith-i3-ilia,
+  regolith-i3-rofication-ilia,
   regolith-i3xrocks-config
 Provides: regolith-look
 Conflicts: regolith-look
