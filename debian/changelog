@@ -1,10 +1,11 @@
-regolith-look-default (0.4.2-1ubuntu1) UNRELEASED; urgency=medium
+regolith-look-default (0.4.3-1) focal; urgency=medium
 
   [ Ken Gilmer ]
   * Add automation
   * Update default look to use nerdfonts version of jetbrains mono.  update glyphs.
+  * Fix glyphs in typeface not specified by font
 
- -- Regolith Linux <regolith.linux@gmail.com>  Sun, 16 Jan 2022 16:46:20 -0800
+ -- Regolith Linux <regolith.linux@gmail.com>  Wed, 26 Jan 2022 08:31:38 -0800
 
 regolith-look-default (0.4.2-1) focal; urgency=medium
 
