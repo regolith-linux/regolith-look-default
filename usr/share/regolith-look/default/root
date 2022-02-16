@@ -3,3 +3,4 @@ regolith.look: default
 #include "/usr/share/regolith-look/default/color"
 #include "/usr/share/regolith-look/default/typeface"
 #include "/usr/share/regolith-look/default/theme"
+#include "/usr/share/regolith-look/default/i3-wm"
