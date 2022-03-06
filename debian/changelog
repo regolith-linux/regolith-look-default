@@ -1,3 +1,10 @@
+regolith-look-default (0.4.5) focal; urgency=medium
+
+  [ Ken Gilmer ]
+  * Add missing icon theme dependency
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Sat, 05 Mar 2022 19:09:09 -0800
+
 regolith-look-default (0.4.4) focal; urgency=medium
 
   [ Ken Gilmer ]

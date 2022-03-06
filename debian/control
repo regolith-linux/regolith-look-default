@@ -10,8 +10,9 @@ Vcs-Git: https://github.com/regolith-linux/regolith-desktop.git
 Package: regolith-look-default
 Architecture: any
 Depends: ${misc:Depends},
-  fonts-nerd-font-jetbrainsmono,
-  ayu-theme
+  adwaita-icon-theme,
+  ayu-theme,
+  fonts-nerd-font-jetbrainsmono
 Recommends:
   i3-next-workspace,
   i3xrocks-cpu-usage,
