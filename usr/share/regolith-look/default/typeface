@@ -30,7 +30,7 @@
 #define typeface_bar_glyph_off 
 #define typeface_bar_glyph_on 
 #define typeface_bar_glyph_sound 奔
-#define typeface_bar_glyph_thermometer ﮎ
+#define typeface_bar_glyph_thermometer 
 #define typeface_bar_glyph_time 
 #define typeface_bar_glyph_up 
 #define typeface_bar_glyph_wifi 

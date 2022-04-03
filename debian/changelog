@@ -1,3 +1,10 @@
+regolith-look-default (0.4.6) focal; urgency=medium
+
+  [ Ken Gilmer ]
+  * Use alternate temp glphy to fix mystery ordering issue
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Sun, 03 Apr 2022 15:42:10 -0700
+
 regolith-look-default (0.4.5) focal; urgency=medium
 
   [ Ken Gilmer ]
