@@ -1,3 +1,11 @@
+regolith-look-default (0.4.7) focal; urgency=medium
+
+  [ Ken Gilmer ]
+  * Alt char for temp
+  * Create new virtual package 'regolith-look-2' to specify a look. Version bump for cleaner upgrades from 1.x
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Fri, 08 Apr 2022 20:28:46 -0700
+
 regolith-look-default (0.4.6) focal; urgency=medium
 
   [ Ken Gilmer ]

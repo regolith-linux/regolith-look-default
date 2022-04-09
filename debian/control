@@ -26,6 +26,6 @@ Recommends:
   regolith-i3-ilia,
   regolith-i3-rofication-ilia,
   regolith-i3xrocks-config
-Provides: regolith-look
+Provides: regolith-look-2
 Description: Default Look for Regolith with minimal dependencies
  A basic Regolith look optimized for minimal dependencies, based on lascaille.
