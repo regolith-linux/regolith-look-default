@@ -1,3 +1,12 @@
+regolith-look-default (0.4.9) bullseye; urgency=medium
+
+  [ Ken Gilmer ]
+  * Use Ubuntu default font for wm font
+  * Adapt for Debian GNOME default font
+  * Update gbp
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Mon, 18 Apr 2022 22:19:25 -0700
+
 regolith-look-default (0.4.8) focal; urgency=medium
 
   [ Ken Gilmer ]
