@@ -1,5 +1,5 @@
 #define typeface_bar_glyph  JetBrainsMono Nerd Font 13
-#define typeface_wm         pango:JetBrainsMono Nerd Font 13
+#define typeface_wm         pango:Ubuntu 11
 #define typeface_bar        pango:JetBrainsMono Nerd Font 11
 #define typeface_rofi       JetBrainsMono Nerd Font 16
 #define terminal_font       JetBrainsMono Nerd Font 12
