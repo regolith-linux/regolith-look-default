@@ -12,8 +12,7 @@ Architecture: any
 Depends: ${misc:Depends},
   adwaita-icon-theme,
   ayu-theme,
-  fonts-nerd-font-jetbrainsmono,
-  fonts-ubuntu
+  fonts-nerd-font-dejavusansmono
 Recommends:
   i3-next-workspace,
   i3xrocks-cpu-usage,
