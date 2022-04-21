@@ -1,3 +1,10 @@
+regolith-look-default (0.4.9) focal; urgency=medium
+
+  [ Ken Gilmer ]
+  * Move from jetbrainsmono to dejavusansmono as font.  Misc cleanup
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Wed, 20 Apr 2022 20:46:01 -0700
+
 regolith-look-default (0.4.8) focal; urgency=medium
 
   [ Ken Gilmer ]
