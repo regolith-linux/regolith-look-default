@@ -12,7 +12,7 @@ Architecture: any
 Depends: ${misc:Depends},
   adwaita-icon-theme,
   ayu-theme,
-  fonts-nerd-font-jetbrainsmono,
+  fonts-nerd-font-ubuntumono,
   fonts-cantarell
 Recommends:
   i3-next-workspace,

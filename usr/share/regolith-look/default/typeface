@@ -1,8 +1,7 @@
-#define typeface_bar_glyph  JetBrainsMono Nerd Font 13
+#define typeface_bar_glyph  UbuntuMono Nerd Font Regular 13
 #define typeface_wm         pango:Cantarell 11
-#define typeface_bar        pango:JetBrainsMono Nerd Font 11
-#define typeface_rofi       JetBrainsMono Nerd Font 16
-#define terminal_font       JetBrainsMono Nerd Font 12
+#define typeface_bar        pango:UbuntuMono Nerd Font Regular 11
+#define terminal_font       UbuntuMono Nerd Font Mono Regular 13
 
 #define typeface_bar_glyph_battery_0 
 #define typeface_bar_glyph_battery_100 
