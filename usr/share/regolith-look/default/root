@@ -1,6 +1,91 @@
-regolith.look: default
+! --------------------------------------------
+! -- This file is in the Xresource file format
+! --------------------------------------------
 
-#include "/usr/share/regolith-look/default/color"
-#include "/usr/share/regolith-look/default/typeface"
-#include "/usr/share/regolith-look/default/theme"
+! --------------------------------------------
+! -- Look name
+! --------------------------------------------
+
+regolith.look: Default
+
+! --------------------------------------------
+! -- Wallpaper 
+! --------------------------------------------
+
+! -- Specify either a complete file path to an image
+
+regolith.wallpaper.file: 
+
+!-- *Or* specify a color
+
+regolith.wallpaper.color.primary:
+
+!-- If specifying a primary color, optional additional settings
+
+regolith.wallpaper.color.secondary:
+regolith.wallpaper.color.shading.type: 
+
+! --------------------------------------------
+! -- Theme elements
+! --------------------------------------------
+
+gtk.theme_name: Ayu-Mirage-Dark
+gtk.icon_theme_name: Adwaita
+
+! --------------------------------------------
+! -- Fonts
+! --------------------------------------------
+
+#define gtk_font_name Bitstream Vera Sans 13
+#define gtk_document_font_name Sans 11
+#define gtk_monospace_font_name BitstreamVeraSansMono Nerd Font 13
+
+gtk.font_name: gtk_font_name
+gtk.document_font_name: gtk_document_font_name
+gtk.monospace_font_name: gtk_monospace_font_name
+
+! --------------------------------------------
+! -- Colors
+! --------------------------------------------
+
+! -- Ayu Mirage colors - https://github.com/ayu-theme/ayu-colors
+
+! -- Darker, dark to light gradients
+#define color_base03   #1F2430
+#define color_base02   #292B30
+#define color_base01   #BFBAB0
+#define color_base00   #CBCCC6
+
+! -- Light gradients
+#define color_base0    #E6E1CF
+#define color_base3    #FFFFFF
+
+! -- Palette 
+#define color_yellow   #FFD580
+#define color_orange   #FFA759
+#define color_red      #FF3333
+#define color_magenta  #D4BFFF
+#define color_violet   #B48EAD
+#define color_blue     #77A8D9
+#define color_cyan     #95E6CB
+#define color_green    #BAE67E
+#define color_brown    #F29E74
+#define color_ltblue   #73D0FF
+#define color_ltgreen  #A6CC70
+#define color_ltyellow #FFE6B3
+#define color_ltcyan   #5CCFE6
+
+! --------------------------------------------
+! -- Component resources
+! --------------------------------------------
+
 #include "/usr/share/regolith-look/default/i3-wm"
+#include "/usr/share/regolith-look/default/gnome-terminal"
+#include "/usr/share/regolith-look/default/i3xrocks"
+
+! --------------------------------------------
+! -- Loader Path - Path to script responsible 
+! -- for configuring UI from Xres values
+! --------------------------------------------
+
+regolith.look.loader: /usr/share/regolith-look/default_loader.sh
