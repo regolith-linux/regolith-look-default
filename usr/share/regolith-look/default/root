@@ -36,9 +36,9 @@ gtk.icon_theme_name: Adwaita
 ! -- Fonts
 ! --------------------------------------------
 
-#define gtk_font_name Bitstream Vera Sans 13
+#define gtk_font_name Bitstream Vera Sans 11
 #define gtk_document_font_name Sans 11
-#define gtk_monospace_font_name BitstreamVeraSansMono Nerd Font 13
+#define gtk_monospace_font_name BitstreamVeraSansMono Nerd Font 12
 
 gtk.font_name: gtk_font_name
 gtk.document_font_name: gtk_document_font_name
