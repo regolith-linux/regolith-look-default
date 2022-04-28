@@ -45,6 +45,8 @@ load_look() {
         if [[ -n "$WALLPAPER_SECONDARY_COLOR" ]] && [[ -n "$WALLPAPER_COLOR_SHADE_TYPE" ]]; then
           gsettings set org.gnome.desktop.background secondary-color "$WALLPAPER_SECONDARY_COLOR"
           gsettings set org.gnome.desktop.background color-shading-type "$WALLPAPER_COLOR_SHADE_TYPE"
+        else
+            gsettings set org.gnome.desktop.background color-shading-type 'solid'
         fi
     fi
 
