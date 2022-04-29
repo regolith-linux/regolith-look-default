@@ -1,3 +1,10 @@
+regolith-look-default (0.5.1) focal; urgency=medium
+
+  [ Ken Gilmer ]
+  * Fix missing default_loader.sh in package
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Thu, 28 Apr 2022 19:00:38 -0700
+
 regolith-look-default (0.5.0) focal; urgency=medium
 
   [ Ken Gilmer ]
