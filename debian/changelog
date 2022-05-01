@@ -1,3 +1,10 @@
+regolith-look-default (0.5.3) focal; urgency=medium
+
+  [ Ken Gilmer ]
+  * Specify custom stylesheet for ilia to fix Debian issue with incorrect font used in keybindings view
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Sun, 01 May 2022 12:30:49 -0700
+
 regolith-look-default (0.5.2) focal; urgency=medium
 
   [ Ken Gilmer ]
