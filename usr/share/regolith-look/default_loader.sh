@@ -35,7 +35,9 @@ load_look() {
     WALLPAPER_PRIMARY_COLOR=$(xrescat regolith.wallpaper.color.primary)
     if [[ -f "$WALLPAPER_FILE" ]]; then
         gsettings set org.gnome.desktop.background picture-uri "file://$(eval echo $WALLPAPER_FILE)"
+        gsettings set org.gnome.desktop.background picture-options wallpaper
     elif [[ -n "$WALLPAPER_PRIMARY_COLOR" ]]; then
+        gsettings set org.gnome.desktop.background picture-options none
         gsettings set org.gnome.desktop.background picture-uri none        
         gsettings set org.gnome.desktop.background primary-color "$WALLPAPER_PRIMARY_COLOR"
 

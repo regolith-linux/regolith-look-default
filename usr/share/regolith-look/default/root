@@ -18,7 +18,7 @@ regolith.wallpaper.file:
 
 !-- *Or* specify a color
 
-regolith.wallpaper.color.primary:
+regolith.wallpaper.color.primary: #323A4C
 
 !-- If specifying a primary color, optional additional settings
 
