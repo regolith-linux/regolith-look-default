@@ -4,6 +4,8 @@
 #define i3wm_gaps_outer_size            0
 #define i3wm_bar_position               bottom
 
+ilia.stylesheet: /usr/share/regolith-look/default/ilia.css
+
 i3-wm.bar.position: i3wm_bar_position
 i3-wm.bar.background.color: color_base03
 i3-wm.bar.statusline.color: color_base0
