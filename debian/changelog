@@ -1,3 +1,10 @@
+regolith-look-default (0.5.2) focal; urgency=medium
+
+  [ Ken Gilmer ]
+  * Wallpaper fixes to default loader.  Misc tweaks and cleanup
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Sat, 30 Apr 2022 22:25:21 -0700
+
 regolith-look-default (0.5.1) focal; urgency=medium
 
   [ Ken Gilmer ]
