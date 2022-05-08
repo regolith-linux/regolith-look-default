@@ -1,3 +1,10 @@
+regolith-look-default (0.5.4) focal; urgency=medium
+
+  [ Georg Lauterbach ]
+  * updated `default_loader.sh` | style, formatting & refactoring
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Sun, 08 May 2022 09:19:36 -0700
+
 regolith-look-default (0.5.3) focal; urgency=medium
 
   [ Ken Gilmer ]
