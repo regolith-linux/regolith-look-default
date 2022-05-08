@@ -13,8 +13,10 @@ regolith.look: default
 ! --------------------------------------------
 
 ! -- Specify either a complete file path to an image
+! -- and (optionally) options how to display the file
 
-regolith.wallpaper.file: 
+regolith.wallpaper.file:
+regolith.wallpaper.options:
 
 !-- *Or* specify a color
 
