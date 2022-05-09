@@ -37,7 +37,7 @@ load_look() {
     WALLPAPER_PRIMARY_COLOR=$(xrescat regolith.wallpaper.color.primary || true)
 
     if [[ -f ${WALLPAPER_FILE:-} ]]; then
-        gsettings set org.gnome.desktop.background picture-uri "file://${WALLPAPER_FILE})"
+        gsettings set org.gnome.desktop.background picture-uri "file://${WALLPAPER_FILE}"
         gsettings set org.gnome.desktop.background picture-options "${WALLPAPER_FILE_OPTIONS:-wallpaper}"
     elif [[ -n ${WALLPAPER_FILE_PRE_RESOLVED} ]]; then
         printf 'Path to wallpaper file ('%s') is invalid"' "${WALLPAPER_FILE_PRE_RESOLVED}" >&2
