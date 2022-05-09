@@ -31,13 +31,16 @@ load_look() {
     fi
     
     # Set the wallpaper
-    WALLPAPER_FILE=$(xrescat regolith.wallpaper.file || true)
+    WALLPAPER_FILE_PRE_RESOLVED=$(xrescat regolith.wallpaper.file || true)
+    WALLPAPER_FILE=$(realpath -e "${WALLPAPER_FILE_PRE_RESOLVED}" || true)
     WALLPAPER_FILE_OPTIONS=$(xrescat regolith.wallpaper.options || true)
     WALLPAPER_PRIMARY_COLOR=$(xrescat regolith.wallpaper.color.primary || true)
 
     if [[ -f ${WALLPAPER_FILE:-} ]]; then
-        gsettings set org.gnome.desktop.background picture-uri "file://${WALLPAPER_FILE}"
+        gsettings set org.gnome.desktop.background picture-uri "file://${WALLPAPER_FILE})"
         gsettings set org.gnome.desktop.background picture-options "${WALLPAPER_FILE_OPTIONS:-wallpaper}"
+    elif [[ -n ${WALLPAPER_FILE_PRE_RESOLVED} ]]; then
+        printf 'Path to wallpaper file ('%s') is invalid"' "${WALLPAPER_FILE_PRE_RESOLVED}" >&2
     elif [[ -n ${WALLPAPER_PRIMARY_COLOR:-} ]]; then
         gsettings set org.gnome.desktop.background picture-options none
         gsettings set org.gnome.desktop.background picture-uri none        
@@ -56,7 +59,7 @@ load_look() {
 
     # Configure the gnome-terminal profile
     if command -v gnome-terminal &>/dev/null; then # check if gnome-terminal is in ${PATH}
-        UPDATE_TERM_FLAG=$(xrescat gnome.terminal.update true || true)
+        UPDATE_TERM_FLAG=$(xrescat gnome.terminal.update || true)
         if [[ "${UPDATE_TERM_FLAG:-}" == 'true' ]] && \
            [[ -f '/usr/share/regolith-ftue/regolith-init-term-profile' ]] ; then
             /usr/share/regolith-ftue/regolith-init-term-profile
