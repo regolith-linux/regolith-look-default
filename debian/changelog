@@ -1,3 +1,10 @@
+regolith-look-default (0.5.6) focal; urgency=medium
+
+  [ Ken Gilmer ]
+  * Default terminal profile update to true
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Mon, 16 May 2022 07:12:17 -0700
+
 regolith-look-default (0.5.5) focal; urgency=medium
 
   [ Georg Lauterbach ]
