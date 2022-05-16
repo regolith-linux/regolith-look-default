@@ -59,7 +59,7 @@ load_look() {
 
     # Configure the gnome-terminal profile
     if command -v gnome-terminal &>/dev/null; then # check if gnome-terminal is in ${PATH}
-        UPDATE_TERM_FLAG=$(xrescat gnome.terminal.update || :)
+        UPDATE_TERM_FLAG=$(xrescat gnome.terminal.update true || :) # if unspecified, default to true
         if [[ "${UPDATE_TERM_FLAG:-}" == 'true' ]] && \
            [[ -f '/usr/share/regolith-ftue/regolith-init-term-profile' ]] ; then
             /usr/share/regolith-ftue/regolith-init-term-profile
