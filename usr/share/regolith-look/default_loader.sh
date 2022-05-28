@@ -57,6 +57,33 @@ load_look() {
         fi
     fi
 
+    # Set the lockscreen (screensaver) wallpaper
+    LOCKSCREEN_WALLPAPER_FILE=$(xrescat regolith.lockscreen.wallpaper.file || :)
+    LOCKSCREEN_WALLPAPER_FILE_RESOLVED=$(realpath -e "${LOCKSCREEN_WALLPAPER_FILE/#~/${HOME}}" 2>/dev/null || :)
+    LOCKSCREEN_WALLPAPER_FILE_OPTIONS=$(xrescat regolith.lockscreen.wallpaper.options || :)
+    LOCKSCREEN_WALLPAPER_PRIMARY_COLOR=$(xrescat regolith.lockscreen.wallpaper.color.primary || :)
+
+    if [[ -f ${LOCKSCREEN_WALLPAPER_FILE_RESOLVED:-} ]]; then
+        gsettings set org.gnome.desktop.screensaver picture-uri "file://${LOCKSCREEN_WALLPAPER_FILE_RESOLVED}"
+        gsettings set org.gnome.desktop.screensaver picture-options "${LOCKSCREEN_WALLPAPER_FILE_OPTIONS:-wallpaper}"
+    elif [[ -n ${LOCKSCREEN_WALLPAPER_FILE:-} ]]; then
+        printf 'Path to lockscreen wallpaper file ('%s') is invalid"' "${WALLPAPER_FILE}" >&2
+    elif [[ -n ${LOCKSCREEN_WALLPAPER_PRIMARY_COLOR:-} ]]; then
+        gsettings set org.gnome.desktop.screensaver picture-options none
+        gsettings set org.gnome.desktop.screensaver picture-uri none        
+        gsettings set org.gnome.desktop.screensaver primary-color "${LOCKSCREEN_WALLPAPER_PRIMARY_COLOR}"
+
+        LOCKSCREEN_WALLPAPER_SECONDARY_COLOR=$(xrescat regolith.lockscreen.wallpaper.color.secondary || :)
+        LOCKSCREEN_WALLPAPER_COLOR_SHADE_TYPE=$(xrescat regolith.lockscreen.wallpaper.color.shading.type || :)
+
+        if [[ -n ${LOCKSCREEN_WALLPAPER_SECONDARY_COLOR:-} ]] && [[ -n ${LOCKSCREEN_WALLPAPER_COLOR_SHADE_TYPE} ]]; then
+            gsettings set org.gnome.desktop.screensaver secondary-color "${LOCKSCREEN_WALLPAPER_SECONDARY_COLOR}"
+            gsettings set org.gnome.desktop.screensaver color-shading-type "${LOCKSCREEN_WALLPAPER_COLOR_SHADE_TYPE}"
+        else
+            gsettings set org.gnome.desktop.screensaver color-shading-type 'solid'
+        fi
+    fi
+
     # Configure the gnome-terminal profile
     if command -v gnome-terminal &>/dev/null; then # check if gnome-terminal is in ${PATH}
         UPDATE_TERM_FLAG=$(xrescat gnome.terminal.update true || :) # if unspecified, default to true
