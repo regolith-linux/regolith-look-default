@@ -1,5 +1,7 @@
 ! --------------------------------------------
 ! -- This file is in the Xresource file format
+! --
+! -- This is the root file of Xresource definition for the Regolith 2 default look.
 ! --------------------------------------------
 
 ! --------------------------------------------
@@ -109,6 +111,7 @@ gtk.monospace_font_name: gtk_monospace_font_name
 ! --------------------------------------------
 ! -- Loader Path - Path to script responsible 
 ! -- for configuring UI from Xres values
+! -- NOTE: The following script path can be changed to support alternative look configurations
 ! --------------------------------------------
 
 regolith.look.loader: /usr/share/regolith-look/default_loader.sh
