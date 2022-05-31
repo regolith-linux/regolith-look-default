@@ -1,4 +1,4 @@
-regolith-look-default (0.6.1) focal; urgency=medium
+regolith-look-default (0.6.2) focal; urgency=medium
 
   [ Ken Gilmer ]
   * Add docs to Xresources
