@@ -1,3 +1,10 @@
+regolith-look-default (0.6.1) focal; urgency=medium
+
+  [ Ken Gilmer ]
+  * Add docs to Xresources
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Tue, 31 May 2022 08:55:09 -0700
+
 regolith-look-default (0.6.0) focal; urgency=medium
 
   [ Ken Gilmer ]
