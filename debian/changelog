@@ -1,3 +1,10 @@
+regolith-look-default (0.6.5) focal; urgency=medium
+
+  [ joe ]
+  * Set titlebar style settings
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Fri, 01 Jul 2022 21:14:42 -0700
+
 regolith-look-default (0.6.4) focal; urgency=medium
 
   [ Ken Gilmer ]
