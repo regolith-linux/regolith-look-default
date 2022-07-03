@@ -1,3 +1,10 @@
+regolith-look-default (0.7.0) focal; urgency=medium
+
+  [ Ken Gilmer ]
+  * Use colors in workspace labels
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Sat, 02 Jul 2022 21:29:59 -0700
+
 regolith-look-default (0.6.5) focal; urgency=medium
 
   [ joe ]
