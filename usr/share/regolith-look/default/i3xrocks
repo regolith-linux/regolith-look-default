@@ -32,13 +32,13 @@
 #define typeface_bar_glyph_wired 
 #define typeface_bar_glyph_workspace 
 
-i3xrocks.label.color:       color_base0
-i3xrocks.value.color:       color_base00
+i3xrocks.label.color:       color_light_2
+i3xrocks.value.color:       color_dark_1
 i3xrocks.value.font:        gtk_monospace_font_name
 i3xrocks.critical.color:    color_red
 i3xrocks.error.color:       color_orange
 i3xrocks.warning:           color_yellow
-i3xrocks.nominal:           color_base0
+i3xrocks.nominal:           color_light_2
 
 i3xrocks.label.thermometer: typeface_bar_glyph_thermometer
 

@@ -11,7 +11,7 @@ Package: regolith-look-default
 Architecture: any
 Depends: ${misc:Depends},
   hicolor-icon-theme,
-  ayu-theme,
+  gnome-themes-standard,
   fonts-nerd-font-bitstreamverasansmono,
   ttf-bitstream-vera
 Recommends:
