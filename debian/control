@@ -10,7 +10,7 @@ Vcs-Git: https://github.com/regolith-linux/regolith-desktop.git
 Package: regolith-look-default
 Architecture: any
 Depends: ${misc:Depends},
-  adwaita-icon-theme,
+  hicolor-icon-theme,
   ayu-theme,
   fonts-nerd-font-bitstreamverasansmono,
   ttf-bitstream-vera
