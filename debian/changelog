@@ -1,3 +1,13 @@
+regolith-look-default (0.7.2) focal; urgency=medium
+
+  [ Soumya Ranjan Patnaik ]
+  * Added support for wayland
+
+  [ Regolith Linux ]
+  * Decompose look and loader script for cleaner dependency. Use virtual package for resource loading to generalize between x11 and wayland
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Fri, 02 Sep 2022 12:04:36 -0700
+
 regolith-look-default (0.7.1) focal; urgency=medium
 
   [ Ken Gilmer ]
