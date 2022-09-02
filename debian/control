@@ -12,6 +12,7 @@ Architecture: any
 Depends: ${misc:Depends},
   libglib2.0-bin,
   regolith-resource-loader
+Conflicts: regolith-look-default (< 0.7.2)
 Description: Script to update desktop from settings
  This package provides the default logic for updating desktop UI settings based
  on Xresources and other settings.
