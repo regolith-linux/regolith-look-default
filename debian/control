@@ -7,12 +7,22 @@ Standards-Version: 4.1.2
 Homepage: https://github.com/regolith-linux/regolith-desktop
 Vcs-Git: https://github.com/regolith-linux/regolith-desktop.git
 
+Package: regolith-look-default-loader
+Architecture: any
+Depends: ${misc:Depends},
+  libglib2.0-bin,
+  regolith-resource-loader
+Description: Script to update desktop from settings
+ This package provides the default logic for updating desktop UI settings based
+ on Xresources and other settings.
+
 Package: regolith-look-default
 Architecture: any
 Depends: ${misc:Depends},
-  hicolor-icon-theme,
-  gnome-themes-standard,
   fonts-nerd-font-bitstreamverasansmono,
+  gnome-themes-standard,
+  hicolor-icon-theme,
+  regolith-look-default-loader,
   ttf-bitstream-vera
 Recommends:
   i3-next-workspace,
