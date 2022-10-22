@@ -7,16 +7,6 @@ Standards-Version: 4.1.2
 Homepage: https://github.com/regolith-linux/regolith-desktop
 Vcs-Git: https://github.com/regolith-linux/regolith-desktop.git
 
-Package: regolith-look-default-loader
-Architecture: any
-Depends: ${misc:Depends},
-  libglib2.0-bin,
-  regolith-resource-loader
-Conflicts: regolith-look-default (< 0.7.2)
-Description: Script to update desktop from settings
- This package provides the default logic for updating desktop UI settings based
- on Xresources and other settings.
-
 Package: regolith-look-default
 Architecture: any
 Depends: ${misc:Depends},
@@ -41,3 +31,13 @@ Recommends:
 Provides: regolith-look-2
 Description: Default Look for Regolith with minimal dependencies
  A basic Regolith look optimized for minimal dependencies, based on lascaille.
+
+Package: regolith-look-default-loader
+Architecture: any
+Depends: ${misc:Depends},
+  libglib2.0-bin,
+  regolith-resource-loader
+Conflicts: regolith-look-default (< 0.7.2)
+Description: Script to update desktop from settings
+ This package provides the default logic for updating desktop UI settings based
+ on Xresources and other settings.
