@@ -10,23 +10,21 @@ Vcs-Git: https://github.com/regolith-linux/regolith-desktop.git
 Package: regolith-look-default
 Architecture: any
 Depends: ${misc:Depends},
-  hicolor-icon-theme,
-  gnome-themes-standard,
   fonts-nerd-font-bitstreamverasansmono,
+  gnome-themes-standard,
+  hicolor-icon-theme,
+  regolith-look-default-loader,
   ttf-bitstream-vera
-Recommends:
-  i3-next-workspace,
-  i3xrocks-cpu-usage,
-  i3xrocks-net-traffic,
-  i3xrocks-time,
-  regolith-i3-compositor,
-  regolith-i3-ftue,
-  regolith-i3-gaps-partial,
-  regolith-i3-gnome,
-  regolith-i3-i3xrocks,
-  regolith-i3-ilia,
-  regolith-i3-rofication-ilia,
-  regolith-i3xrocks-config
 Provides: regolith-look-2
 Description: Default Look for Regolith with minimal dependencies
  A basic Regolith look optimized for minimal dependencies, based on lascaille.
+
+Package: regolith-look-default-loader
+Architecture: any
+Depends: ${misc:Depends},
+  libglib2.0-bin,
+  regolith-resource-loader
+Conflicts: regolith-look-default (< 0.7.2)
+Description: Script to update desktop from settings
+ This package provides the default logic for updating desktop UI settings based
+ on Xresources and other settings.

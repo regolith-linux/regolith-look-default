@@ -1,3 +1,43 @@
+regolith-look-default (0.7.5) focal; urgency=medium
+
+  * Add border around ilia dialog for better contrast
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Fri, 04 Nov 2022 18:59:32 -0700
+
+regolith-look-default (0.7.4) focal; urgency=medium
+
+  * Remove recommends from default, moving upstream so avoid issues when users do not opt to install the default look
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Sun, 30 Oct 2022 20:30:46 -0700
+
+regolith-look-default (0.7.3) focal; urgency=medium
+
+  * Simplify font spec in i3 workspace label. Allow xres override of bar font
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Sun, 23 Oct 2022 09:26:23 -0700
+
+regolith-look-default (0.7.2-3) focal; urgency=medium
+
+  * Turns out bin package decl in debian control matters
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Sat, 22 Oct 2022 11:19:49 -0700
+
+regolith-look-default (0.7.2-2) focal; urgency=medium
+
+  * Add conflicts to prevent package install failure
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Fri, 02 Sep 2022 15:26:00 -0700
+
+regolith-look-default (0.7.2) focal; urgency=medium
+
+  [ Soumya Ranjan Patnaik ]
+  * Added support for wayland
+
+  [ Regolith Linux ]
+  * Decompose look and loader script for cleaner dependency. Use virtual package for resource loading to generalize between x11 and wayland
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Fri, 02 Sep 2022 12:04:36 -0700
+
 regolith-look-default (0.7.1) focal; urgency=medium
 
   [ Ken Gilmer ]
