@@ -1,3 +1,14 @@
+regolith-look-default (0.8.0) focal; urgency=medium
+
+  [ Soumya Ranjan Patnaik ]
+  * Added support for wayland
+
+  [ Ken Gilmer ]
+  * Refactor xres namespace to be x11 agnostic.  i3-wm -> wm
+  * Remove i3 from wm filename
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Sun, 26 Feb 2023 10:25:06 -0800
+
 regolith-look-default (0.7.5) focal; urgency=medium
 
   * Add border around ilia dialog for better contrast
