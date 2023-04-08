@@ -11,7 +11,7 @@ Package: regolith-look-default
 Architecture: any
 Depends: ${misc:Depends},
   fonts-nerd-font-bitstreamverasansmono,
-  gnome-themes-standard,
+  gnome-themes-extra,
   hicolor-icon-theme,
   regolith-look-default-loader,
   ttf-bitstream-vera
