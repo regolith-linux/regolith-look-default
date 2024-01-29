@@ -1,3 +1,9 @@
+regolith-look-default (0.8.2) focal; urgency=medium
+
+  * fix: force removal of deprecated conflicting package
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Sun, 28 Jan 2024 16:12:30 -0800
+
 regolith-look-default (0.8.1) focal; urgency=medium
 
   * Update upstream theme package for lunar
