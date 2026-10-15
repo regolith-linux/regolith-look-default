@@ -16,6 +16,7 @@ regolith.look: default
 
 gtk.theme_name: Adwaita-dark
 gtk.icon_theme_name: hicolor
+gtk.color_scheme: prefer-dark
 
 ! --------------------------------------------
 ! -- Fonts
