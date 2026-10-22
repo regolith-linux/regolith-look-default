@@ -6,4 +6,5 @@
 override_dh_auto_test:
 ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 	sh tests/check-looks.sh
+	bash tests/check-loader.sh
 endif
