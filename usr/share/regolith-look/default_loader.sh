@@ -52,6 +52,12 @@ load_look() {
 
     if [[ -f ${WALLPAPER_FILE_RESOLVED:-} ]]; then
         gsettings set org.gnome.desktop.background picture-uri "file://${WALLPAPER_FILE_RESOLVED}"
+        # With the dark style (color-scheme prefer-dark) GNOME draws picture-uri-dark
+        # instead, so set it too where the key exists (GNOME 42 and later)
+        BACKGROUND_KEYS=$(gsettings list-keys org.gnome.desktop.background)
+        if [[ "${BACKGROUND_KEYS}" =~ (^|$'\n')picture-uri-dark($'\n'|$) ]]; then
+            gsettings set org.gnome.desktop.background picture-uri-dark "file://${WALLPAPER_FILE_RESOLVED}"
+        fi
         gsettings set org.gnome.desktop.background picture-options "${WALLPAPER_FILE_OPTIONS:-wallpaper}"
     elif [[ -n ${WALLPAPER_FILE:-} ]]; then
         printf 'Path to wallpaper file ('%s') is invalid"' "${WALLPAPER_FILE}" >&2
