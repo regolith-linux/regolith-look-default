@@ -1,3 +1,16 @@
+regolith-look-default (0.8.5) focal; urgency=medium
+
+  [ Chris Redekop ]
+  * Add support for org.gnome.desktop.interface color-scheme
+  * Ensure GNOME supports color-scheme
+
+  [ rego-port-bot ]
+  * feat(default): set gtk.color_scheme to prefer-dark
+  * test: check every look sets a valid gtk.color_scheme at build time
+  * fix(loader): set picture-uri-dark along with picture-uri
+
+ -- Regolith Linux <regolith.linux@gmail.com>  Tue, 27 Oct 2026 12:00:00 -0700
+
 regolith-look-default (0.8.4) focal; urgency=medium
 
   [ Khosrow Moossavi ]
