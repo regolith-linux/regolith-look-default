@@ -76,7 +76,7 @@ load_look() {
         fi
         gsettings set org.gnome.desktop.background picture-options "${WALLPAPER_FILE_OPTIONS:-wallpaper}"
     elif [[ -n ${WALLPAPER_FILE:-} ]]; then
-        printf 'Path to wallpaper file ('%s') is invalid"' "${WALLPAPER_FILE}" >&2
+        printf 'Path to wallpaper file (%s) is invalid\n' "${WALLPAPER_FILE}" >&2
     elif [[ -n ${WALLPAPER_PRIMARY_COLOR:-} ]]; then
         gsettings set org.gnome.desktop.background picture-options none
         gsettings set org.gnome.desktop.background picture-uri none        
@@ -104,7 +104,7 @@ load_look() {
         gsettings set org.gnome.desktop.screensaver picture-uri "${LOCKSCREEN_WALLPAPER_URI}"
         gsettings set org.gnome.desktop.screensaver picture-options "${LOCKSCREEN_WALLPAPER_FILE_OPTIONS:-wallpaper}"
     elif [[ -n ${LOCKSCREEN_WALLPAPER_FILE:-} ]]; then
-        printf 'Path to lockscreen wallpaper file ('%s') is invalid"' "${WALLPAPER_FILE}" >&2
+        printf 'Path to lockscreen wallpaper file (%s) is invalid\n' "${LOCKSCREEN_WALLPAPER_FILE}" >&2
     elif [[ -n ${LOCKSCREEN_WALLPAPER_PRIMARY_COLOR:-} ]]; then
         gsettings set org.gnome.desktop.screensaver picture-options none
         gsettings set org.gnome.desktop.screensaver picture-uri none        

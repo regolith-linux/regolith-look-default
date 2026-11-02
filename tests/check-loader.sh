@@ -89,6 +89,20 @@ run_loader "$ALL_KEYS" 'regolith.wallpaper.file: /nonexistent/wall.png' 2> /dev/
 expect_none 'missing wallpaper file: picture-uri not written' picture-uri
 expect_none 'missing wallpaper file: picture-uri-dark not written' picture-uri-dark
 
+# Each invalid path is reported with its own name, one message per line
+run_loader "$ALL_KEYS" 'regolith.wallpaper.file: /missing/desktop.png' \
+    'regolith.lockscreen.wallpaper.file: /missing/lock.png' 2> "$WORK/stderr"
+for line in 'Path to wallpaper file (/missing/desktop.png) is invalid' \
+            'Path to lockscreen wallpaper file (/missing/lock.png) is invalid'; do
+    if grep -qxF "$line" "$WORK/stderr"; then
+        echo "ok   invalid path diagnostic: $line"
+    else
+        echo "FAIL invalid path diagnostic: no '$line' in:" >&2
+        sed 's/^/       /' "$WORK/stderr" >&2
+        status=1
+    fi
+done
+
 # A file name must reach GNOME percent-encoded, otherwise the URI names
 # another file ('%20' decodes to a space) or is cut at '#' or '?'
 for name in 'wall%20paper.png:wall%2520paper.png' 'wall#paper.png:wall%23paper.png' \
