@@ -11,6 +11,9 @@ status=0
 
 mkdir -p "$WORK/bin"
 touch "$WORK/wall.png"
+# Names that are not valid in a URI as they stand
+touch "$WORK/wall%20paper.png" "$WORK/wall#paper.png" "$WORK/wall?paper.png" \
+      "$WORK/wall paper.png" "$WORK/wallé.png"
 
 # xrescat <key> [default]: print the value from $WORK/resources
 cat > "$WORK/bin/xrescat" <<'EOF'
@@ -85,5 +88,18 @@ expect 'color: primary-color' 'org.gnome.desktop.background primary-color #10203
 run_loader "$ALL_KEYS" 'regolith.wallpaper.file: /nonexistent/wall.png' 2> /dev/null
 expect_none 'missing wallpaper file: picture-uri not written' picture-uri
 expect_none 'missing wallpaper file: picture-uri-dark not written' picture-uri-dark
+
+# A file name must reach GNOME percent-encoded, otherwise the URI names
+# another file ('%20' decodes to a space) or is cut at '#' or '?'
+for name in 'wall%20paper.png:wall%2520paper.png' 'wall#paper.png:wall%23paper.png' \
+            'wall?paper.png:wall%3Fpaper.png' 'wall paper.png:wall%20paper.png' \
+            'wallé.png:wall%C3%A9.png'; do
+    file=${name%%:*} encoded=${name#*:}
+    run_loader "$ALL_KEYS" "regolith.wallpaper.file: $WORK/$file" \
+        "regolith.lockscreen.wallpaper.file: $WORK/$file"
+    expect "wallpaper '$file': picture-uri" "org.gnome.desktop.background picture-uri file://$WORK/$encoded"
+    expect "wallpaper '$file': picture-uri-dark" "org.gnome.desktop.background picture-uri-dark file://$WORK/$encoded"
+    expect "lockscreen wallpaper '$file': picture-uri" "org.gnome.desktop.screensaver picture-uri file://$WORK/$encoded"
+done
 
 exit "$status"
