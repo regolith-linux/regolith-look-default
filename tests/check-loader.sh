@@ -11,6 +11,9 @@ status=0
 
 mkdir -p "$WORK/bin"
 touch "$WORK/wall.png"
+# Names that are not valid in a URI as they stand
+touch "$WORK/wall%20paper.png" "$WORK/wall#paper.png" "$WORK/wall?paper.png" \
+      "$WORK/wall paper.png" "$WORK/wallé.png"
 
 # xrescat <key> [default]: print the value from $WORK/resources
 cat > "$WORK/bin/xrescat" <<'EOF'
@@ -85,5 +88,32 @@ expect 'color: primary-color' 'org.gnome.desktop.background primary-color #10203
 run_loader "$ALL_KEYS" 'regolith.wallpaper.file: /nonexistent/wall.png' 2> /dev/null
 expect_none 'missing wallpaper file: picture-uri not written' picture-uri
 expect_none 'missing wallpaper file: picture-uri-dark not written' picture-uri-dark
+
+# Each invalid path is reported with its own name, one message per line
+run_loader "$ALL_KEYS" 'regolith.wallpaper.file: /missing/desktop.png' \
+    'regolith.lockscreen.wallpaper.file: /missing/lock.png' 2> "$WORK/stderr"
+for line in 'Path to wallpaper file (/missing/desktop.png) is invalid' \
+            'Path to lockscreen wallpaper file (/missing/lock.png) is invalid'; do
+    if grep -qxF "$line" "$WORK/stderr"; then
+        echo "ok   invalid path diagnostic: $line"
+    else
+        echo "FAIL invalid path diagnostic: no '$line' in:" >&2
+        sed 's/^/       /' "$WORK/stderr" >&2
+        status=1
+    fi
+done
+
+# A file name must reach GNOME percent-encoded, otherwise the URI names
+# another file ('%20' decodes to a space) or is cut at '#' or '?'
+for name in 'wall%20paper.png:wall%2520paper.png' 'wall#paper.png:wall%23paper.png' \
+            'wall?paper.png:wall%3Fpaper.png' 'wall paper.png:wall%20paper.png' \
+            'wallé.png:wall%C3%A9.png'; do
+    file=${name%%:*} encoded=${name#*:}
+    run_loader "$ALL_KEYS" "regolith.wallpaper.file: $WORK/$file" \
+        "regolith.lockscreen.wallpaper.file: $WORK/$file"
+    expect "wallpaper '$file': picture-uri" "org.gnome.desktop.background picture-uri file://$WORK/$encoded"
+    expect "wallpaper '$file': picture-uri-dark" "org.gnome.desktop.background picture-uri-dark file://$WORK/$encoded"
+    expect "lockscreen wallpaper '$file': picture-uri" "org.gnome.desktop.screensaver picture-uri file://$WORK/$encoded"
+done
 
 exit "$status"

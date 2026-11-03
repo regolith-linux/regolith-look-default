@@ -8,6 +8,21 @@ if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
     RESOURCE_GETTER="trawlcat"
 fi
 
+# path_to_uri <path>: print the file:// URI for an absolute path. Every byte
+# outside the URI unreserved set is percent-encoded, so '%', '#', '?', spaces
+# and non-ASCII names reach GNOME as the same file.
+path_to_uri() {
+    local LC_ALL=C path=$1 uri='file://' c i
+    for (( i = 0; i < ${#path}; i++ )); do
+        c=${path:i:1}
+        case $c in
+            [A-Za-z0-9/._~-]) uri+=$c ;;
+            *) printf -v c '%%%02X' "'$c"; uri+=$c ;;
+        esac
+    done
+    printf '%s\n' "$uri"
+}
+
 load_look() {
     # Set GNOME interface options from Xresources values if specifed by Xresources
     GTK_THEME=$($RESOURCE_GETTER gtk.theme_name || :)
@@ -51,16 +66,17 @@ load_look() {
     WALLPAPER_PRIMARY_COLOR=$($RESOURCE_GETTER regolith.wallpaper.color.primary || :)
 
     if [[ -f ${WALLPAPER_FILE_RESOLVED:-} ]]; then
-        gsettings set org.gnome.desktop.background picture-uri "file://${WALLPAPER_FILE_RESOLVED}"
+        WALLPAPER_URI=$(path_to_uri "${WALLPAPER_FILE_RESOLVED}")
+        gsettings set org.gnome.desktop.background picture-uri "${WALLPAPER_URI}"
         # With the dark style (color-scheme prefer-dark) GNOME draws picture-uri-dark
         # instead, so set it too where the key exists (GNOME 42 and later)
         BACKGROUND_KEYS=$(gsettings list-keys org.gnome.desktop.background)
         if [[ "${BACKGROUND_KEYS}" =~ (^|$'\n')picture-uri-dark($'\n'|$) ]]; then
-            gsettings set org.gnome.desktop.background picture-uri-dark "file://${WALLPAPER_FILE_RESOLVED}"
+            gsettings set org.gnome.desktop.background picture-uri-dark "${WALLPAPER_URI}"
         fi
         gsettings set org.gnome.desktop.background picture-options "${WALLPAPER_FILE_OPTIONS:-wallpaper}"
     elif [[ -n ${WALLPAPER_FILE:-} ]]; then
-        printf 'Path to wallpaper file ('%s') is invalid"' "${WALLPAPER_FILE}" >&2
+        printf 'Path to wallpaper file (%s) is invalid\n' "${WALLPAPER_FILE}" >&2
     elif [[ -n ${WALLPAPER_PRIMARY_COLOR:-} ]]; then
         gsettings set org.gnome.desktop.background picture-options none
         gsettings set org.gnome.desktop.background picture-uri none        
@@ -84,10 +100,11 @@ load_look() {
     LOCKSCREEN_WALLPAPER_PRIMARY_COLOR=$($RESOURCE_GETTER regolith.lockscreen.wallpaper.color.primary || :)
 
     if [[ -f ${LOCKSCREEN_WALLPAPER_FILE_RESOLVED:-} ]]; then
-        gsettings set org.gnome.desktop.screensaver picture-uri "file://${LOCKSCREEN_WALLPAPER_FILE_RESOLVED}"
+        LOCKSCREEN_WALLPAPER_URI=$(path_to_uri "${LOCKSCREEN_WALLPAPER_FILE_RESOLVED}")
+        gsettings set org.gnome.desktop.screensaver picture-uri "${LOCKSCREEN_WALLPAPER_URI}"
         gsettings set org.gnome.desktop.screensaver picture-options "${LOCKSCREEN_WALLPAPER_FILE_OPTIONS:-wallpaper}"
     elif [[ -n ${LOCKSCREEN_WALLPAPER_FILE:-} ]]; then
-        printf 'Path to lockscreen wallpaper file ('%s') is invalid"' "${WALLPAPER_FILE}" >&2
+        printf 'Path to lockscreen wallpaper file (%s) is invalid\n' "${LOCKSCREEN_WALLPAPER_FILE}" >&2
     elif [[ -n ${LOCKSCREEN_WALLPAPER_PRIMARY_COLOR:-} ]]; then
         gsettings set org.gnome.desktop.screensaver picture-options none
         gsettings set org.gnome.desktop.screensaver picture-uri none        
