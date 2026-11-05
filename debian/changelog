@@ -1,3 +1,11 @@
+regolith-look-default (0.8.7) focal; urgency=medium
+
+  [ rego-port-bot ]
+  * fix(loader): percent-encode wallpaper paths in file URIs
+  * fix(loader): name the lockscreen wallpaper path in its diagnostic
+
+ -- Ken Gilmer <kgilmer@gmail.com>  Thu, 05 Nov 2026 15:37:25 -0800
+
 regolith-look-default (0.8.5) focal; urgency=medium
 
   [ Chris Redekop ]
