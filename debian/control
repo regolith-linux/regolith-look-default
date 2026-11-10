@@ -10,7 +10,7 @@ Vcs-Git: https://github.com/regolith-linux/regolith-desktop.git
 Package: regolith-look-default
 Architecture: any
 Depends: ${misc:Depends},
-  fonts-nerd-font-bitstreamverasansmono,
+  fonts-nerd-font-bitstreamverasansmono (>= 3.5.1),
   gnome-themes-extra,
   hicolor-icon-theme,
   regolith-look-default-loader,
