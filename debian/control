@@ -24,9 +24,15 @@ Description: Default Look for Regolith with minimal dependencies
 Package: regolith-look-default-loader
 Architecture: any
 Depends: ${misc:Depends},
+  dconf-cli,
+  gir1.2-pango-1.0,
   libglib2.0-bin,
-  regolith-resource-loader
+  python3,
+  python3-gi,
+  regolith-resource-loader,
+  uuid-runtime
 Conflicts: regolith-look-default (< 0.7.2)
 Description: Script to update desktop from settings
  This package provides the default logic for updating desktop UI settings based
- on Xresources and other settings.
+ on Xresources and other settings, including the colours and font of the
+ Ptyxis, foot and GNOME Terminal terminals.

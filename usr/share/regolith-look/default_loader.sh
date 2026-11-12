@@ -121,6 +121,11 @@ load_look() {
         fi
     fi
 
+    # Theme Ptyxis and foot. Their problems are reported, and never fail the
+    # look. This runs before the GNOME Terminal profile, whose script stops
+    # the look when it fails.
+    "$(dirname -- "${BASH_SOURCE[0]}")/terminal_loader.sh" || :
+
     # Configure the gnome-terminal profile
     if command -v gnome-terminal &>/dev/null; then # check if gnome-terminal is in ${PATH}
         UPDATE_TERM_FLAG=$($RESOURCE_GETTER gnome.terminal.update true || :) # if unspecified, default to true
