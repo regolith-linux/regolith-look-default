@@ -41,10 +41,12 @@ chmod +x "$WORK/bin/xrescat" "$WORK/bin/gsettings"
 export STUB_RESOURCES=$WORK/resources STUB_LOG=$WORK/log
 ALL_KEYS="picture-uri picture-uri-dark picture-options primary-color secondary-color color-shading-type"
 
-# run_loader <background keys> <resources...>: run load_look in a fresh shell
+# run_loader <background keys> <resources...>: run load_look in a fresh shell,
+# with the terminals left alone
 run_loader() {
     keys=$1; shift
-    printf '%s\n' "$@" 'gnome.terminal.update: false' > "$STUB_RESOURCES"
+    printf '%s\n' "$@" 'gnome.terminal.update: false' 'ptyxis.terminal.update: false' \
+        'foot.terminal.update: false' > "$STUB_RESOURCES"
     : > "$STUB_LOG"
     STUB_BACKGROUND_KEYS=$keys XDG_SESSION_TYPE=x11 PATH="$WORK/bin:$PATH" \
         bash -c 'source "$1"; load_look' loader "$LOADER"
@@ -115,5 +117,78 @@ for name in 'wall%20paper.png:wall%2520paper.png' 'wall#paper.png:wall%23paper.p
     expect "wallpaper '$file': picture-uri-dark" "org.gnome.desktop.background picture-uri-dark file://$WORK/$encoded"
     expect "lockscreen wallpaper '$file': picture-uri" "org.gnome.desktop.screensaver picture-uri file://$WORK/$encoded"
 done
+
+# The terminal loader with Ptyxis left alone: foot's look file, and the
+# include line in foot.ini. gnome.terminal.font stays unset.
+TERMINAL_LOADER=$PWD/usr/share/regolith-look/terminal_loader.sh
+FOOT_DIR=$WORK/config/foot
+FOOT_LOOK=$FOOT_DIR/regolith-look.ini
+PALETTE=('gnome.terminal.color0: #abc' 'gnome.terminal.color1: #123456789'
+         'gnome.terminal.color2: #FFFF0000FFFF' 'gnome.terminal.color3: #c0ffee ')
+for i in 4 5 6 7 8 9 10 11 12 13 14 15; do
+    PALETTE+=("gnome.terminal.color$i: #0000$((i + 10))")
+done
+
+# run_terminals <resources...>: run the terminal loader in a fresh shell
+run_terminals() {
+    printf '%s\n' "$@" 'ptyxis.terminal.update: false' > "$STUB_RESOURCES"
+    XDG_SESSION_TYPE=x11 XDG_CONFIG_HOME=$WORK/config PATH="$WORK/bin:$PATH" \
+        bash "$TERMINAL_LOADER"
+}
+
+# expect_in <description> <file> <line>: the file has this line
+expect_in() {
+    if grep -qxF -- "$3" "$2" 2>/dev/null; then
+        echo "ok   $1"
+    else
+        echo "FAIL $1: no '$3' in $2" >&2
+        status=1
+    fi
+}
+
+run_terminals "${PALETTE[@]}" 'gnome.terminal.background-color: banana' \
+    'gnome.terminal.use-transparent-background: true' \
+    'gnome.terminal.background-transparency-percent: 20'
+expect_in 'foot: #RGB colour' "$FOOT_LOOK" 'regular0=AABBCC'
+expect_in 'foot: #RRRGGGBBB colour' "$FOOT_LOOK" 'regular1=124578'
+expect_in 'foot: #RRRRGGGGBBBB colour' "$FOOT_LOOK" 'regular2=FF00FF'
+expect_in 'foot: blanks around a colour' "$FOOT_LOOK" 'regular3=C0FFEE'
+expect_in 'foot: bright colours' "$FOOT_LOOK" 'bright7=000025'
+expect_in 'foot: unusable background-color falls back to color0' "$FOOT_LOOK" 'background=AABBCC'
+expect_in 'foot: foreground defaults to color7' "$FOOT_LOOK" 'foreground=000017'
+expect_in 'foot: cursor' "$FOOT_LOOK" 'cursor=124578 000018'
+expect_in 'foot: transparency' "$FOOT_LOOK" 'alpha=0.8'
+expect_in 'foot: new foot.ini includes the look' "$FOOT_DIR/foot.ini" "include=$FOOT_LOOK"
+
+run_terminals "${PALETTE[@]}" 'gnome.terminal.use-transparent-background: true' \
+    'gnome.terminal.background-transparency-percent: '
+expect_in 'foot: blank transparency percent means 4' "$FOOT_LOOK" 'alpha=0.96'
+
+# The user's foot.ini follows the include line byte for byte, keeps its
+# mode, and gets the line once
+printf 'font=Hack 12\n[colors]\nregular1=112233' > "$FOOT_DIR/foot.ini"
+chmod 600 "$FOOT_DIR/foot.ini"
+run_terminals "${PALETTE[@]}"
+run_terminals "${PALETTE[@]}"
+expected=$(printf 'include=%s\nfont=Hack 12\n[colors]\nregular1=112233' "$FOOT_LOOK"; echo .)
+actual=$(cat "$FOOT_DIR/foot.ini"; echo .)
+if [ "$actual" = "$expected" ] && [ "$(stat -c %a "$FOOT_DIR/foot.ini")" = 600 ]; then
+    echo "ok   foot: user foot.ini includes the look first"
+else
+    echo "FAIL foot: user foot.ini changed otherwise:" >&2
+    sed 's/^/       /' "$FOOT_DIR/foot.ini" >&2
+    status=1
+fi
+
+# A palette entry that is missing changes nothing, and is named
+rm -rf "$WORK/config"
+if run_terminals "${PALETTE[@]:1}" 2> "$WORK/stderr" || ! grep -q 'gnome\.terminal\.color0\b' "$WORK/stderr" ||
+   [ -e "$FOOT_DIR" ]; then
+    echo "FAIL foot: missing color0 not reported, or files written:" >&2
+    sed 's/^/       /' "$WORK/stderr" >&2
+    status=1
+else
+    echo "ok   foot: missing color0 changes nothing"
+fi
 
 exit "$status"
